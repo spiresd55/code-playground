@@ -119,6 +119,8 @@ binaryTree2.insert(2, binaryTree2.head);
 binaryTree2.insert(1, binaryTree2.head);
 binaryTree2.insert(4, binaryTree2.head);
 binaryTree2.insert(6, binaryTree2.head);
+binaryTree2.insert(7, binaryTree2.head);
+binaryTree2.insert(0, binaryTree2.head);
 
 
 //https://en.wikipedia.org/wiki/Tree_traversal
@@ -165,13 +167,89 @@ function inOrderTranversal(head) {
 
 }
 
-//CAN BE RETURN -1 if height is number of edges
+let levelOrder = ''; //ALSO KNOWN AS BFS
+function levelOrderTranversal(head) {
+  if(head === null) {
+    return head;
+  }
+
+  let queue = [];
+  queue.push(head);
+
+  while(queue.length > 0) {
+    let node = queue.shift();
+    levelOrder += node.data + ' ';
+
+    if(node.left !== null) {
+      queue.push(node.left);
+    }
+
+    if(node.right !== null) {
+      queue.push(node.right);
+    }
+  }
+
+}
+
+//CAN BE RETURN -1 if height is number of edges, also known as max depth
 function findHeightOfTree(root) {
   if(root === null) {
     return 0;
   }
 
   return Math.max(findHeightOfTree(root.left), findHeightOfTree(root.right)) + 1;
+}
+
+function findMinDepthOfTree(root) {
+  if(root === null) {
+    return 0;
+  }
+
+  if(root.left === null && root.right === null) {
+    return 1;
+  }
+
+  if(root.left === null) {
+    return findMinDepthOfTree(root.right) + 1
+  }
+
+  if(root.right === null) {
+    return findMinDepthOfTree(root.left) + 1;
+  }
+
+  return Math.min(findMinDepthOfTree(root.left), findMinDepthOfTree(root.right)) + 1;
+}
+
+function topLevelView(root) {
+  let leftStack = [];
+  let rightQueue = [];
+
+  let currentLeftNode = root;
+  let currentRightNode = root;
+
+  while(currentLeftNode.left !== null) {
+    currentLeftNode = currentLeftNode.left;
+    leftStack.push(currentLeftNode);
+  }
+
+  while(currentRightNode.right !== null) {
+    currentRightNode = currentRightNode.right;
+    rightQueue.push(currentRightNode);
+  }
+
+  let output = '';
+
+  while(leftStack.length > 0) {
+    output += leftStack.pop().data + ' ';
+  }
+
+  output += root.data + ' ';
+
+  while(rightQueue.length > 0) {
+    output += rightQueue.shift().data + ' ';
+  }
+
+  return output;
 }
 
 console.log('PRE ORDER TRANSVERSAL');
@@ -186,8 +264,18 @@ console.log('IN ORDER TRANVERSAL');
 inOrderTranversal(binaryTree2.head);
 console.log(inOrder);
 
-console.log('The height of a binary tree');
+console.log('LEVEL ORDER TRANVERSAL');
+levelOrderTranversal(binaryTree2.head);
+console.log(levelOrder);
+
+console.log('The height of a binary tree(MAX DEPTH)');
 console.log(findHeightOfTree(binaryTree2.head));
+
+console.log('FIND MIN DEPTH OF BINARY TREE(MIN DEPTH)');
+console.log(findMinDepthOfTree(binaryTree2.head));
+
+console.log('TOP LEVEL VIEW');
+console.log(topLevelView(binaryTree2.head));
 
 
 /* JAVA SOLUTION
