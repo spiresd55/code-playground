@@ -220,6 +220,23 @@ function findMinDepthOfTree(root) {
   return Math.min(findMinDepthOfTree(root.left), findMinDepthOfTree(root.right)) + 1;
 }
 
+//TODO: FIX THIS IMPLEMENTATION
+function findLCA(root, n1, n2) {
+  if(root === null) {
+    return null;
+  }
+  if(root.data === n1 || root.data === n2) {
+    return root.data;
+  }
+  if(root.data > n1 && root.data > n2) {
+    return findLCA(root.left, n1, n2);
+  }
+  if(root.data < n1 && root.data < n2) {
+    return findLCA(root.right, n1, n2);
+  }
+  return root.data;
+}
+
 function topLevelView(root) {
   let leftStack = [];
   let rightQueue = [];
@@ -252,6 +269,49 @@ function topLevelView(root) {
   return output;
 }
 
+//DO A INORDER TRANVERSAL AND CHECK IF LIST IS SORTED
+function isBinaryTree(head) {
+  let treeCollection = [];
+  checkIsBinaryTree(head, treeCollection);
+
+  let temp = treeCollection[0];
+  for (let i = 1; i < treeCollection.length; i++) {
+    if(temp >= treeCollection[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkIsBinaryTree(head, treeCollection) {
+  if(head === null) {
+    return head;
+  }
+
+  checkIsBinaryTree(head.left, treeCollection);
+
+  treeCollection.push(head.data);
+
+  checkIsBinaryTree(head.right, treeCollection);
+}
+
+//TODO: TURN A TREE INTO A LINKED LIST
+function flatterTree(head) {
+  if(head === null) {
+    return head;
+  }
+
+  output += ' ' + head.data;
+
+  if(head.left) {
+    preOrderTranversal(head.left);
+  }
+
+  if(head.right) {
+    preOrderTranversal(head.right);
+  }
+}
+
 console.log('PRE ORDER TRANSVERSAL');
 preOrderTranversal(binaryTree2.head);
 console.log(output);
@@ -277,6 +337,12 @@ console.log(findMinDepthOfTree(binaryTree2.head));
 console.log('TOP LEVEL VIEW');
 console.log(topLevelView(binaryTree2.head));
 
+console.log('FINDING THE LCA');
+console.log(findLCA(binaryTree2.head, 1, 4));
+
+console.log('IS BINARY TREE');
+console.log(isBinaryTree(binaryTree2.head));
+
 
 /* JAVA SOLUTION
  String output = "";
@@ -297,3 +363,14 @@ console.log(topLevelView(binaryTree2.head));
  }
  */
 
+//TODO: Implement the AVL Binary Search Tree
+class AVLBinarySearchTree {
+  constructor() {
+    this.length = 0;
+    this.head = null;
+  }
+
+  insert() {
+
+  }
+}
