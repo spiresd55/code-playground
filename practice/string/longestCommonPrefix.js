@@ -18,4 +18,4 @@ function longestCommonPrefix(strCollection) {
 }
 
 console.log('Longest common prefix');
-console.log(longestCommonPrefix(['aaabc', 'aaabac', 'aaaaa']));
+console.log(longestCommonPrefix(['aaabc', 'aaabac', 'aab', 'aaaaa']));

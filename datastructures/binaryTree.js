@@ -122,6 +122,10 @@ binaryTree2.insert(6, binaryTree2.head);
 binaryTree2.insert(7, binaryTree2.head);
 binaryTree2.insert(0, binaryTree2.head);
 
+//binaryTree2.insert(8);
+//binaryTree2.insert(9);
+//binaryTree2.insert(10);
+
 
 //https://en.wikipedia.org/wiki/Tree_traversal
 let output = ' ';
@@ -221,7 +225,7 @@ function findMinDepthOfTree(root) {
 }
 
 //TODO: FIX THIS IMPLEMENTATION
-function findLCA(root, n1, n2) {
+/*function findLCA(root, n1, n2) {
   if(root === null) {
     return null;
   }
@@ -235,6 +239,73 @@ function findLCA(root, n1, n2) {
     return findLCA(root.right, n1, n2);
   }
   return root.data;
+}*/
+
+//n: node value
+function findPath(root, path, n) {
+
+  if(root === null) {
+    path = [];
+    return false;
+  }
+
+  path.push(root.data);
+
+  //IF the root equals the node value
+  if(root.data === n) {
+    return true;
+  }
+
+  if(root.data > n) {
+    return findPath(root.left, path, n);
+  }
+
+  if(root.data < n) {
+    return findPath(root.right, path, n);
+  }
+
+  path = [];
+  return false;
+}
+
+//n1: node value 1, n2: node value2
+function findLCA(root, n1, n2) {
+  let path1 = [];
+  let path2 = [];
+
+  if( findPath(root, path1, n1) && findPath(root, path2, n2)) {
+    let index = 0;
+    while(path1[index] === path2[index]) {
+      index++;
+    }
+    console.log(findShortestPath(path1[index -1], path1, path2));
+
+    return path1[index - 1];
+  } else {
+    return null;
+  }
+}
+
+function findShortestPath(lca, path1, path2) {
+  let path1Travel = 0;
+  let path2Travel = 0;
+
+  for(let i =0; i < path1.length ; i++) {
+    if(path1[i] === lca) {
+      path1Travel = path1.slice(i + 1).length;
+      break;
+    }
+  }
+
+  for(let i =0; i < path2.length ; i++) {
+    if(path2[i] === lca) {
+      path2Travel = path2.slice(i + 1).length;
+      break;
+    }
+  }
+
+  return path1Travel + path2Travel;
+
 }
 
 function topLevelView(root) {
@@ -295,6 +366,43 @@ function checkIsBinaryTree(head, treeCollection) {
   checkIsBinaryTree(head.right, treeCollection);
 }
 
+function isBalancedTree(head) {
+  let maxDepth = findHeightOfTree(head);
+  let minDepth = findMinDepthOfTree(head);
+
+  if(maxDepth - minDepth <= 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//TODO: FINISH THIS LATER
+function areTreesMirrored(root1, root2) {
+  let collection1 = [];
+  let collection2 = [];
+
+  mirror(root1, collection1);
+  mirror(root2, collection2);
+
+  console.log(collection1);
+  console.log(collection2);
+}
+
+//TODO: Write is symetric algorithim
+
+function mirror(root, treeCollection) {
+  if(root === null) {
+    return root;
+  }
+
+  checkIsBinaryTree(root.left, treeCollection);
+
+  treeCollection.push(root.data);
+
+  checkIsBinaryTree(root.right, treeCollection);
+}
+
 //TODO: TURN A TREE INTO A LINKED LIST
 function flatterTree(head) {
   if(head === null) {
@@ -337,12 +445,20 @@ console.log(findMinDepthOfTree(binaryTree2.head));
 console.log('TOP LEVEL VIEW');
 console.log(topLevelView(binaryTree2.head));
 
-console.log('FINDING THE LCA');
-console.log(findLCA(binaryTree2.head, 1, 4));
+//console.log('FINDING THE LCA');
+//console.log(findLCA(binaryTree2.head, 1, 4));
 
 console.log('IS BINARY TREE');
 console.log(isBinaryTree(binaryTree2.head));
 
+console.log('IS BALANCED BINARY TREE');
+console.log(isBalancedTree(binaryTree2.head));
+
+console.log('MIRROR TREES');
+console.log(areTreesMirrored(binaryTree2.head, binaryTree2.head));
+
+console.log('FINDING LCA AGAIN');
+console.log(findLCA(binaryTree2.head, 7, 0));
 
 /* JAVA SOLUTION
  String output = "";
