@@ -79,15 +79,6 @@ class BinaryTree {
     return currentNode;
   }
 
-  //TODO: write an algorithim to sort a tree (page95)
-  //sortAsc() {
-  //  let min = findMinimum();
-  //  let sortedArray = [];
-  //
-//    sortedArray.push(min);
-//  }
-
-  //TODO: Write an algorithim to delete from this tree (PAGE 93)
 }
 
 let binaryTree = new BinaryTree();
@@ -224,24 +215,6 @@ function findMinDepthOfTree(root) {
   return Math.min(findMinDepthOfTree(root.left), findMinDepthOfTree(root.right)) + 1;
 }
 
-//TODO: FIX THIS IMPLEMENTATION
-/*function findLCA(root, n1, n2) {
-  if(root === null) {
-    return null;
-  }
-  if(root.data === n1 || root.data === n2) {
-    return root.data;
-  }
-  if(root.data > n1 && root.data > n2) {
-    return findLCA(root.left, n1, n2);
-  }
-  if(root.data < n1 && root.data < n2) {
-    return findLCA(root.right, n1, n2);
-  }
-  return root.data;
-}*/
-
-//n: node value
 function findPath(root, path, n) {
 
   if(root === null) {

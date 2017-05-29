@@ -1,0 +1,29 @@
+.board {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.board .row {
+    height: 50px;
+}
+
+.board .row:nth-child(2) {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.board .row span {
+    border-right: 1px solid black;
+    width: 33%;
+    display: block;
+    float: left;
+    height: 100%;
+    font-size: 45px;
+    text-align: center;
+}
+
+.board .row span:last-child {
+    border-right: none;
+}

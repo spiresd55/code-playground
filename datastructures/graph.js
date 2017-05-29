@@ -69,11 +69,11 @@ class Graph {
 
     vertexStart.edges.forEach( (vertice) =>  {
       if(!~visited.indexOf(vertice)) {
-      console.log(vertice);
-      visited[vertice] = true;
-      this.dfsVisit(vertice);
-    }
-  });
+        console.log(vertice);
+        visited[vertice] = true;
+        this.dfsVisit(vertice);
+      }
+    });
   }
 
   //TODO: Write DFS algorithim
@@ -135,3 +135,68 @@ graph.dfs();
 //TODO: Learn if graph is a cycle
 
 //TODO: Solve rubix cube probelm 2 x 2
+
+
+
+//TODO: Create a weighted graph
+//TODO: Implement Dijistras Algorithim
+function minComparator(a, b) {
+  return a < b;
+}
+
+class WeightedVertex {
+  constructor(name) {
+    this.name = name;
+    this.edges = [];
+  }
+
+  addEdge(vertex, weight) {
+    this.edges.push({
+      weight: weight,
+      vertex: vertex
+    })
+  }
+}
+
+class WeightedGraph {
+  constructor() {
+    this.vertexes = [];
+  }
+
+  addVertex(vertex) {
+    this.vertexes[vertex.name] = vertex;
+    this.pQueue = new PriorityQueue(minComparator);
+  }
+
+  findShortestPath(vertex1, vertex2) {
+
+  }
+}
+
+let v1 = new WeightedVertex('A');
+let v2 = new WeightedVertex('B');
+let v3 = new WeightedVertex('C');
+let v4 = new WeightedVertex('D');
+let v5 = new WeightedVertex('E');
+
+v1.addEdge(v2, 4);
+v1.addEdge(v3, 2);
+
+v2.addEdge(v3, 3);
+v2.addEdge(v4, 2);
+v2.addEdge(v5, 3);
+
+v3.addEdge(v2, 1);
+v3.addEdge(v4, 4);
+v3.addEdge(v4, 5);
+
+v5.addEdge(v4, 1);
+
+//https://www.youtube.com/watch?v=_lHSawdgXpI
+let weightedGraph = new WeightedGraph();
+weightedGraph.addVertex(v1);
+weightedGraph.addVertex(v2);
+weightedGraph.addVertex(v3);
+weightedGraph.addVertex(v4);
+weightedGraph.addVertex(v5);
+
