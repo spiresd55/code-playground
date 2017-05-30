@@ -38,7 +38,7 @@ function findWays(value, coins, index, lookup) {
 }
 
 console.log('Making change');
-console.log(findNumWaysToMakeChange(100, '1 25'));
+console.log(findNumWaysToMakeChange(100, '1 25 5 10 50'));
 
 
 /*
