@@ -44,12 +44,25 @@ console.log(selectionSort(numbers));
 //TODO: Implement a MIN and MAX HEAP Structure  (124)
 //DOCUMENTATION FOUND HERE: http://eloquentjavascript.net/1st_edition/appendix2.html
 
+let unsArr = [10, 100, 8, 2, -3, -5, 66, 92, 0, 18];
+function bubbleSort(arr, n) {
+  let k = 0;
+  for(let i = 0; i < n - k; i++) {
+    for(let j = 0; j < n - i -1; j++) {
+      let temp = arr[j];
+      if(arr[j] > arr[j + 1]) {
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+    k++;
+  }
+  
+  return arr;
+}
 
-
-
-
-
-
+console.log('BUBBLE SORT');
+console.log(bubbleSort(unsArr, 10));
 
 
 //Write mergesort here
