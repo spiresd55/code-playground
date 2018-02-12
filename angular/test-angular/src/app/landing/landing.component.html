@@ -1,0 +1,11 @@
+<div>
+  <h1>{{title}}</h1>
+  <p>I love {{language}}</p>
+
+  <h2>Other Languages</h2>
+  <ul>
+    <li *ngFor="let lang of languages">
+      {{lang.language}}
+    </li>
+  </ul>
+</div>
