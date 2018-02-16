@@ -263,3 +263,104 @@ var objIt = itObj[Symbol.iterator]();
 console.log(objIt.next());
 console.log(objIt.next());
 console.log(objIt.next());
+
+
+//PROTOTYPE CHAPTER BEGINS HERE
+let prototypeObj = {
+    a: 1234
+};
+
+console.log(prototypeObj.a); //Object performs [GET] operation and finds a property on obj
+
+let anotherPrototypeObj = Object.create(prototypeObj);
+//AnotherPrototypeObj will not have property a, but the chained prototypeObj will
+//Same thing will work using For In loop, will show up as an enumerable property
+
+console.log(`Prototype: ${anotherPrototypeObj.a}`);
+
+console.log("a" in anotherPrototypeObj); //Enumerable
+//Object.prototype is the final object in a prototype chain
+
+//Object shadowing can have unexpected results
+
+console.log(prototypeObj.hasOwnProperty("a")); //true
+console.log(anotherPrototypeObj.hasOwnProperty("a")); //false
+
+anotherPrototypeObj.a++;
+
+console.log(prototypeObj.a); //1234
+console.log(anotherPrototypeObj.a); //1235
+console.log(anotherPrototypeObj.hasOwnProperty("a")); //True
+//Parent prototype object was not changed, instead new property created with incremented val
+//Avoid this by incrementing the parent most prototype in the chain
+//Javascript just has objects, classes don't technically exist
+
+
+//Very Abused Concept In Javascript
+
+function FooBar() {
+}
+
+FooBar.prototype.test = function() {
+    console.log("Calling test function")
+};
+
+let biz = new FooBar(); //New is not actually creating a new copy of the object. Its linking 2 objects to the same prototype chain
+console.log(Object.getPrototypeOf( biz )=== FooBar.prototype); // true
+console.log(FooBar.prototype.constructor === FooBar); //true,  A constructor is just a reference back to the function
+//Constructors are functions with new in front of them, that happens to create new objects
+
+biz.test(); //Biz does not have test function on the object, the FooBar function holds the function, and biz links to it(Delegation)
+
+//Prototypal inheritance
+console.log(biz.__proto__); //FooBar
+console.log(biz.__proto__.__proto__); // {} or Object
+console.log(biz.__proto__.__proto__.__proto__); //null (Null marks the end of prototypal inheritance)
+//When javascript checks for a property, it checks to see if the current object has the prop, and it will move up the prototype
+//chain until it hits null obj.__proto__ === Object.getPrototypeOf(obj);
+
+// Avoid using new, and use Object.create(inheritedObj) to delegate parent object props and methods
+//https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch5.md
+
+
+//Behavior Delegation Chapter
+
+
+//Delegation in practice
+//OLOO Objects-linked-to-other-objects
+var Task = {
+    setID: function(ID) { this.id = ID; },
+    outputID: function() { console.log( this.id ); }
+};
+
+var XYZ = Object.create(Task);
+
+XYZ.prepareTask = function(ID,Label) {
+    this.setID( ID ); //Label and id live on the XYZ not the linked Task object
+    this.label = Label; //ID is set on XYZ due to the callsite being XYZ
+};
+
+XYZ.outputTaskDetails = function() {
+    this.outputID(); //Unlike classes, we are not overloading. We are simply extending the parent object and providing more functionality
+    console.log( this.label );
+};
+
+XYZ.prepareTask(1, 'test1234');
+XYZ.outputTaskDetails();
+
+
+
+//More info found in this chapter: https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch6.md
+
+
+//Better way to test if an object is an instance of an object using behavior delegation concepts
+if(Task.isPrototypeOf(XYZ)) {
+    console.log('THIS IS TRUE');
+}
+
+if(Object.getPrototypeOf(XYZ) === Task) {
+    console.log('This is also true');
+}
+
+
+
