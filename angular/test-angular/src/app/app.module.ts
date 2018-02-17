@@ -6,21 +6,27 @@ import { routes } from './app.routes';
 import { LandingComponent } from './landing/landing.component';
 import { BannerInlineComponent } from './test/banner-inline/banner-inline.component';
 import { UserService } from "./test/user.service";
+import { TwainService } from "./test/twain/twain.service";
 import { TwainComponent } from './test/twain/twain.component';
+import { DashboardComponent } from './test/dashboard/dashboard.component';
+import { DashboardHeroComponent } from './test/dashboard/dashboard-hero/dashboard-hero.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     BannerInlineComponent,
-    TwainComponent
+    TwainComponent,
+    DashboardComponent,
+    DashboardHeroComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
-    UserService
+    UserService,
+    TwainService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,7 @@
+<p>
+  dashboard works!
+  <app-dashboard-hero *ngFor="let hero of heroes"
+                      [hero]="hero"
+                      (selected)="heroSelected($event)">
+  </app-dashboard-hero>
+</p>
