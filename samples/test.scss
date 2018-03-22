@@ -1,0 +1,65 @@
+
+
+
+  //BAD CSS
+  body div p {
+    color: black; //Now every P tag contained within a div will need to have more specificity to overwrite.
+  }
+
+  span {
+    display: block !important; //!Important should be avoided at all costs.
+  }
+
+  //The only way to overwrite !Important is to add more specificity
+  #container-div span {
+    display: inline-block !important; //Eventually developers will be left with unmaintainable css
+  }
+
+  //If child selectors are necessary, try to use a direct descendant selector
+  div > p {
+    color: black;
+  }
+
+  //The above css can still be improved
+  .custom-content > p {
+    color: black; //Now all the divs are not being selected, only elements with custom-content css class will be selected
+  }
+
+  //Add project prefix to component css
+  .project-custom-content > p {
+    color: black; // This reduces the chance of overwriting css libraries brought in as dependencies
+  }
+
+  //Use a CSS Preprocessor such as SASS to reduce CSS size and complexity
+  $content-primary-color: #333;
+
+  .project-custom-content {
+    & > p {
+      color: $content-primary-color;
+    }
+  }
+
+  //Use MixIns to help with CSS complexities
+  @mixin box-shadow($horizontal: 1px, $vertical: 1px, $blur: 1px, $color: #333) {
+    -webkit-box-shadow: $horizontal $vertical $blur $color;
+    -moz-box-shadow: $horizontal $vertical $blur $color;
+    box-shadow: $horizontal $vertical $blur $color;
+  }
+
+  .project-custom-button {
+    @include box-shadow(2px, 2px, 2px, #CCC); //Reduce CSS by 3 lines every time a box-shadow is needed.
+  }
+
+
+
+  /*
+  Fast Transaction
+
+    Any use case where transaction consistency is more important than the datastore speed of NoSql dbs.
+    Anytime scalable transactions are needed. It is better to go with a RDBMS. Examples would include getting
+    trades at the current best price, meeting SLAs for Telco applications, or detecting a fraudulent credit card before
+    a transaction is approved. These transactions can happen millions of times a day, and a RDBMS can handle the velocity
+    of which these transactions occur.
+   */
+
+

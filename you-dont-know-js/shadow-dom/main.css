@@ -1,0 +1,13 @@
+*, slot {
+    color: blue;
+}
+
+
+:host-context(.darktheme) { //If host element contains, overwrite will happen
+    background-color:black;
+    color: blue;
+}
+
+::slotted(h1) {
+    color: aqua;
+}

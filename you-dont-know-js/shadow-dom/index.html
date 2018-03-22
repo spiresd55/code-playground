@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js"></script>
+    <script src="customElement.js"></script>
+</head>
+<body class="darktheme">
+    <custom-element></custom-element>
+
+    <p>Testing Shadow Dom With slot element provided</p>
+    <custom-element> <h1>HERE IS A TITLE</h1>
+                    <h2 slot="subtitle">HERE IS A SUBTITLE</h2>
+                    <h3 slot="subsection">HERE IS A SUB SECTION</h3>
+    </custom-element>
+
+
+    <h3>Custom HTML Drawer Element</h3>
+    <app-drawer open></app-drawer>
+</body>
+</html>

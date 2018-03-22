@@ -40,6 +40,19 @@ window.onload = () => {
             console.log('List Item CLicked Again')
         });
     }
+
+    //DOM && Windows
+    console.log(document == window); //false
+    console.log(document === window); //false
+    console.log(window.document);
+
+    var a = [];
+    a.unshift(1);
+    a.unshift(2);
+    a.shift(); //Removes first
+    a.unshift(3, [4,5]);
+    a.shift();
+    console.log(a);
 }
 
 function clickTest() {
