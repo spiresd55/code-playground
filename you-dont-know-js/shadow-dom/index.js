@@ -46,3 +46,8 @@ customElements.define('custom-element', class extends HTMLElement {
 `;
     }
 });
+
+
+function testFunction() {
+    console.log('TEST FUNCTION FIRED');
+}
