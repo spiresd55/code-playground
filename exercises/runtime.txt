@@ -39,3 +39,8 @@ for adding or removing records
 QUEUE (FIFO)) (FIRST IN FIRST OUT) , adding to queue enqueue
 Add to queue array.unshift()
 Remove from queue array.pop()
+
+STACK (FILO) (First In Last Out)
+
+Linked List - Linked Nodes(Chain) Singly or Double
+Head - Tail
