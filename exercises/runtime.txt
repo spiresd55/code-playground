@@ -1,0 +1,36 @@
+Runtime Complexity
+
+Describes the performance of an algorithm
+
+How more processing power/time is required to run your algorithm if we double the inputs
+
+
+//Different Runtimes
+
+//Constant Time - 1 - No matter how many arguments we're working with, the algo will always take the same amount of time.
+//Logarithmic Time - log(n) - when you divide a search in half through every iteration
+//Linear Time - n - Iterating through all elements in a data collection
+//Quasilinear Time - n * log(n) - Sorting algos such as merge sort or quick sort
+//Quadratic Time n ^ 2 - Loop inside of loop
+//Exponential Time 2 ^ n - Adding single element to collection, doubles required computing power
+
+
+Big 'O' Notation O(n) O(1) O(n^2)
+
+Identifying Runtime Complexity
+
+Iterating through a collection -> probably O(n)
+Iterating through half a collection -> Still O(n) There are no constants in runtime
+Iterating through two different collections -> O(n + m)
+Two nested for loops in single collection -> O(n^2)
+Two nested for loops iterating over different collections -> O(n * m)
+Sorting -> O(n*log(n))
+Searching A Sorted Array -> O(log(n))
+
+
+Data Structures
+
+-Ways of organizing information with optimal 'runtime complexity'
+for adding or removing records
+
+-Javascript natively implements data structure. You will be asked about 'inferior' data structures

@@ -23,7 +23,8 @@ function steps(n) {
     for(let i = 0; i < n; i++) {
         arr[i] = '#';
         console.log(arr.join(''));
-    }
+    } //Linear Runtime (N)
 }
 
+//for in for loop (n^2) quadratic runtime
 module.exports = steps;

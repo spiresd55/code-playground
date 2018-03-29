@@ -26,5 +26,5 @@ module.exports = reverse;
 //     reversed = character + reversed;
 //   }
 //
-//   return reversed;
+//   return reversed; //N runtime or linear
 // }
