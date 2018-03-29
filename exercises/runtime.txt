@@ -34,3 +34,8 @@ Data Structures
 for adding or removing records
 
 -Javascript natively implements data structure. You will be asked about 'inferior' data structures
+
+
+QUEUE (FIFO)) (FIRST IN FIRST OUT) , adding to queue enqueue
+Add to queue array.unshift()
+Remove from queue array.pop()
