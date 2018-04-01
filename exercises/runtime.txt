@@ -44,3 +44,10 @@ STACK (FILO) (First In Last Out)
 
 Linked List - Linked Nodes(Chain) Singly or Double
 Head - Tail
+
+
+Sorting Algos
+
+BubbleSort n^ 2
+SelectionSort n ^ 2
+MergeSort n *log(n)

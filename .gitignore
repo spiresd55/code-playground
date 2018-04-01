@@ -3,3 +3,5 @@ angular/node_modules
 exercises/node_modules
 exercises/package-lock.json
 exercises/**/*.log
+built
+typescript/**/*.js
