@@ -1,3 +1,5 @@
+import {ZipCodeValidator} from "./module/ZipCodeValidator";
+
 class Student {
     fullName: string;
     constructor(public firstName: string, public middleInitial: string, public lastName: string) {
@@ -32,3 +34,6 @@ let arr = [1, 2, 3, 4];
 let [first, ...rest] = arr;
 console.log(first);
 console.log(rest);
+
+let validator = new ZipCodeValidator();
+console.log('zipcode: ' + validator.isAcceptable(`12345`));
