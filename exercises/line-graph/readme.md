@@ -10,15 +10,15 @@ $ npm install typescript -g
 $ npm install webpack-cli -g
 $ npm run start:dev
 ```
-After following the above directions the webpack-dev-server should be running on localhost:8080
-It should look something like below.
+After following the above directions, the webpack-dev-server should be running on localhost:8080
+It should look something like this:
 
 ![linegraph](./images/linegraph.png)
 
 
 ### How to change input
-Unfortunately I did not get the chance to enable user input in the application.
-It is something that can be easily added with some more time. 
+Unfortunately, I did not get the chance to enable user input in the application.
+It is something that can be easily added with some more effort. 
 To change the inputs of the app, go to index.html and change the properties 
 on the html element line-graph.
 
@@ -41,11 +41,11 @@ as React or Angular. I can implement this code in either framework.
 ### If I had more time
 - Sass for css
 - User Input for form and settings
-- Code magnification
-- Tests and Test Coverage with Jasmine or Mocha.
-- User Form Validations for user input. 
+- Code minification
+- Tests coverage with Jasmine or Mocha.
+- Form Validations for user input. 
 - Error handling for out of bound coordinates. 
-- User error notifications when something goes wrong
+- Notifications when things go wrong.
 
 ### Quick Notes about the code.
 - The entry point for the app is index.ts
