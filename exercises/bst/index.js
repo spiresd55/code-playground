@@ -54,6 +54,27 @@ class Node {
         }
     }
 
+    mirror() {
+        this.mirrorBst(this);
+    }
+
+
+    mirrorBst(node) {
+        if(node.left) {
+            this.mirrorBst(node.left);
+        }
+
+        if(node.right) {
+            this.mirrorBst(node.right);
+        }
+
+        //swap nodes
+        let leftTemp = node.left;
+        let rightTemp = node.right;
+        node.left = rightTemp;
+        node.right = leftTemp;
+    }
+
 }
 
 module.exports = Node;

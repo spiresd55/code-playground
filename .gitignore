@@ -4,4 +4,6 @@ exercises/node_modules
 exercises/package-lock.json
 exercises/**/*.log
 built
-typescript/**/*.js
+tsPractice/**/*.js
+tsPractice/node_modules
+node_modules

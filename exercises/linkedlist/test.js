@@ -123,6 +123,18 @@ describe('RemoveLast', () => {
     expect(l.head.data).toEqual('a');
   });
 
+    test('Reverse Linked List', () => {
+        const l = new List();
+        l.insertFirst('c');
+        l.insertFirst('b');
+        l.insertFirst('a');
+        l.reverse();
+
+        expect(l.getAt(0).data).toBe('c');
+        expect(l.getAt(1).data).toBe('b');
+        expect(l.getAt(2).data).toBe('a');
+    });
+
   test('RemoveLast removes the last node when list is length 3', () => {
     const l = new List();
     l.insertFirst('c');
