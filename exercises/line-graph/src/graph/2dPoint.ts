@@ -3,9 +3,10 @@ export interface TwoDimensionalPoint {
     y: number;
 }
 
+//Ideally I should separate these into 2 separate files
 export class TwoDimensionalPoint implements TwoDimensionalPoint{
     constructor(x: number, y: number) {
-        this.x = x;
-        this.y = y;
+        this.x = x; //X coordinate
+        this.y = y; //Y coordinate
     }
 }

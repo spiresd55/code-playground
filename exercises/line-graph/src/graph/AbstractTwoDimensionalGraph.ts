@@ -1,11 +1,16 @@
-import {TwoDimensionalGraph} from "./Graph";
+import {TwoDimensionalGraph} from "./TwoDimensionalGraph";
 import {TwoDimensionalPoint} from "./2dPoint";
+import {ProjectComponent} from "../ProjectComponent";
 
+//Extends HTML Element, since this component with initialize a custom element using HTMLElement
+//See using custom components docs: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements
 export abstract class AbstractTwoDimensionalGraph
-    extends HTMLElement implements TwoDimensionalGraph {
+    extends HTMLElement implements TwoDimensionalGraph, ProjectComponent {
 
     points: TwoDimensionalPoint[];
     abstract draw(points: [TwoDimensionalPoint]): void;
+    abstract render():void;
+    abstract connectedCallback():void;
 
     //Getters and setters for component properties
     set canvasHeight(height: string) {
@@ -38,5 +43,20 @@ export abstract class AbstractTwoDimensionalGraph
 
     get maxY(): string {
         return this.getAttribute("max-y");
+    }
+
+    set userPoints(points: string) {
+        this.setAttribute("points", points);
+    }
+
+    get userPoints(): string {
+        return this.getAttribute("points");
+    }
+
+    //Allows array strings to be passed into component and converted to TwoDimensionalPoints
+    convertTupleToPointArray(arr: any[]): TwoDimensionalPoint[] {
+        return arr.map((point: any[]) => {
+           return new TwoDimensionalPoint(point[0], point[1]);
+        });
     }
 }

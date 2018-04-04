@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
 <body>
-    <script src="bundle.js"></script>
+    <!--Custom Line Component Initialized-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <line-graph
+                        canvas-height="500"
+                        canvas-width="700"
+                        points="[[1,2], [3,5], [5,2], [7,9], [10,12],
+                        [11, 6], [15, 18], [17, 1], [20, 20]]"
+                        max-x="20"
+                        max-y="20">
+                </line-graph>
+            </div>
+            <div class="col-md">
+                <div class="jumbotron">
+                    <h1 class="display-4">Line Graph</h1>
+                    <p class="lead">This is a exercise to build a line graph component using only Typescript and
+                        vanilla Javascript.</p>
+                    <hr class="my-4">
+                    <p>Bootstrap was the only framework brought into the project for quick styling changes.</p>
+                </div>
+            </div>
+    </div>
 
-    <line-graph canvas-height="500" canvas-width="500" max-x="10" max-y="10"></line-graph>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bundle.js"></script>
 </body>
 </html>
