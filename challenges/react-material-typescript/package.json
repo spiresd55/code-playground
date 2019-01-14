@@ -1,0 +1,24 @@
+{
+  "name": "react-material-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "webpack"
+  },
+  "author": "David Spires",
+  "license": "ISC",
+  "dependencies": {
+    "react-dom": "^16.7.0",
+    "ts-loader": "^5.3.3",
+    "webpack": "^4.28.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "react": "^16.7.0",
+    "typescript": "^3.2.2",
+    "webpack-cli": "^3.2.1"
+  }
+}
