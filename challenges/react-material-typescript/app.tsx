@@ -8,8 +8,13 @@ import {
     ListItem,
     ListItemText
 } from "@material-ui/core";
-import {Home} from "./components/Home/Home"; //TODO: Create index.ts
+import Home from "./components/Home/Home"; //TODO: Create index.ts
 import {Search} from "./components/Search/Search";
+import {AppStore} from "./store/AppStore"
+import {Provider} from "react-redux";
+
+//Initialize the redux store
+AppStore.getInstance().initialize();
 
 const menuItems = ['Search'];
 
@@ -34,13 +39,15 @@ const drawer = (
 
 //TODO: Modularize routing
 ReactDom.render(
-    <Router>
-        <div>
-            Welcome to the app
-            <Drawer open={true}>{drawer}</Drawer>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/search" component={Search}></Route>
-        </div>
-    </Router>,
+    <Provider store={AppStore.getInstance().store}>
+        <Router>
+            <div>
+                Welcome to the app
+                <Drawer open={false}>{drawer}</Drawer>
+                <Route path="/" exact component={Home}></Route>
+                <Route path="/search" component={Search}></Route>
+            </div>
+        </Router>
+    </Provider>,
     document.getElementById('root')
 );
