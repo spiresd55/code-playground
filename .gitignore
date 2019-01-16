@@ -7,3 +7,4 @@ built
 tsPractice/**/*.js
 tsPractice/node_modules
 node_modules
+build
