@@ -1,18 +1,18 @@
 import * as React from 'react';
 import SourceCard from './SourceCard';
+import {Source} from "./Source";
+import Grid from "@material-ui/core/Grid";
 
 const SourceList = ({sources, filter}) => {
-    console.log('HERE ARE THE SOURCES IN COMPONENT' + sources);
-    //TODO: Create source datatype
-    sources = sources.filter((source: any) => {
+    sources = sources.filter((source: Source) => {
        return source.name.indexOf(filter) != -1;
     });
 
     return(
-       <div>
-           Source List
-           {sources.map(source => <SourceCard source={source}></SourceCard>)}
-       </div>
+       <Grid container spacing={8} justify={'flex-start'} direction={'row'}>
+           <Grid item xs={12}><h2>Add Connection</h2></Grid>
+           {sources.map( (source,index) => <Grid item xs={6} key={`source_${index}`}><SourceCard source={source}></SourceCard></Grid>)}
+       </Grid>
     );
 };
 

@@ -17,7 +17,13 @@ var config = {
                 exclude: /node_modules/
             }
         ]
-    }
+    },
+    /*optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }*/
+    mode: 'development'
 };
 
 module.exports = config;

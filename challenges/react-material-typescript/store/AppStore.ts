@@ -26,8 +26,9 @@ export class AppStore {
     }
 
     public initialize() {
-        console.info("Reaper Store is Initializing !");
+        console.info("App store is intializing!");
 
+        //Allows the store to be broken into different states
         const rootReducer = combineReducers({
             DatasourceState
         });
@@ -36,8 +37,5 @@ export class AppStore {
             rootReducer,
             applyMiddleware(thunk)
         );
-
-        //TODO: Remove this
-        console.info(this.store.getState());
     }
 }

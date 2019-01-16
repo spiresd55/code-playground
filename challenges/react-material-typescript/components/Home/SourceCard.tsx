@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Card, CardContent, Typography} from '@material-ui/core';
 
 const SourceList = ({source}) => {
-    console.log('HERE IS THE SOURCE IN THE COMPONENT' + source);
     return(
         <Card>
             <CardContent>

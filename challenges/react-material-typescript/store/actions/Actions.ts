@@ -1,0 +1,4 @@
+export enum Action {
+    'DATASOURCE_LOADED',
+    'DATASOURCE_SEARCH_UPDATED'
+}

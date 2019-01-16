@@ -6,17 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "webpack",
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack && webpack-dev-server",
+    "start:server": "node ./server/app/bin/www"
   },
   "author": "David Spires",
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "3.8.3",
+    "@mdi/js": "^3.3.92",
     "@types/redux": "3.6.0",
     "cookie-parser": "1.4.3",
     "cors": "^2.8.5",
     "debug": "2.6.9",
     "express": "4.16.0",
+    "material-design-icons": "^3.0.1",
     "morgan": "1.9.0",
     "react-dom": "16.7.0",
     "react-redux": "^6.0.0",
